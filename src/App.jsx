@@ -22,7 +22,7 @@ let url = 'https://api.punkapi.com/v2/beers';
 export default class App extends React.Component {
     state = {
         loading: true,
-        data: []
+        data: [1, 2, 3, 4, 5, 6]
     };
 
     onChange = checked => {
@@ -32,7 +32,9 @@ export default class App extends React.Component {
     componentDidMount() {
         axios.get(url).then(response => {
             const data = response.data;
-            this.setState({data})
+            setTimeout(() => {
+                this.setState({data, loading: false})
+            }, 2000)
         })
     }
 
